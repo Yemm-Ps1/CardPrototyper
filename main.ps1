@@ -99,23 +99,19 @@ $square = [math]::Ceiling([math]::Sqrt($totalCards))
 $outfile = "$PSScriptRoot\output\$File.jpg"
 $tile = "$square`x$square"
 $geometry = "+0+0"
-magick montage $cardDir\*.jpg .\cards\back.jpg -tile $tile -geometry $geometry $outfile
+.\magick\magick montage $cardDir\*.jpg .\cards\back.jpg -tile $tile -geometry $geometry $outfile
 
-$genText = " $args Generated "
-$createText = "= Deck created at $outfile"
-$bar = ($createText.Length - $gentext.Length)/2
+$genText = "Generated '$args'"
+$createText = "Deck created at $outfile"
+$totalText = "There are $totalCards cards."
+$tileText = "It is $tile."
 
-$totalText = "= There are $totalCards cards."
-$totalGap = $createText.Length - $totalText.Length
 
-$tileText = "= It is $tile."
-$tileGap = $createText.Length - $tileText.Length
-
-@"
-$("="*$bar)$genText$("="*$bar)==
-$createText =
-$totalText$(" "*$totalGap) =
-$tileText$(" "*$tileGap) =
-$("="*$createText.Length)==
+$result = @"
+$genText
+$createText
+$totalText
+$tileText
 "@
 
+Tee-Object -InputObject $result -FilePath "$PSScriptRoot\Output\$File.txt"

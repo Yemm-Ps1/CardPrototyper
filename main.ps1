@@ -10,7 +10,7 @@ $cardDir = "$PSScriptRoot\Cards\$File\"
 If(Test-Path $cardDir){
     Remove-Item $cardDir*
 }else{
-    New-Item -Type Directory -Path $cardDir
+    New-Item -Type Directory -Path $cardDir | Out-Null
 }
 
 

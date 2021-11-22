@@ -1,6 +1,7 @@
 *.jpg
 *.csv
 cards/*/
+CardPrototyper.ps1
 !cards/default/
 !cards/back.jpg
 !default.csv

@@ -99,7 +99,7 @@ $square = [math]::Ceiling([math]::Sqrt($totalCards))
 $outfile = "$PSScriptRoot\output\$File.jpg"
 $tile = "$square`x$square"
 $geometry = "+0+0"
-.\magick\magick montage $cardDir\*.jpg .\cards\back.jpg -tile $tile -geometry $geometry $outfile
+.\magick\montage $cardDir\*.jpg .\cards\back.jpg -tile $tile -geometry $geometry $outfile
 
 $genText = "Generated '$args'"
 $createText = "Deck created at $outfile"

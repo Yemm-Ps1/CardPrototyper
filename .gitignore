@@ -1,0 +1,7 @@
+*.jpg
+*.csv
+cards/*/
+!cards/default/
+!cards/back.jpg
+!default.csv
+!default.jpg
